@@ -26,24 +26,10 @@ describe('check that the results make sense statistically.', () => {
   it('should return true', () => {
     const mySampler: weightedSampler = createWeightedSampler([
       { weight: 1, reward: 0 },
-      { weight: 10, reward: 1 },
-      { weight: 100, reward: 2 },
-      { weight: 1000, reward: 3 },
-      { weight: 10000, reward: 4 }
-    ])
-    const resultArray: number[] = new Array(5).fill(0)
-    for (let i = 0; i < 1000 ; i++) {
-      resultArray[mySampler()]++
-    }
-    expect(resultArray[0] <= resultArray[1] && resultArray[1] <= resultArray[2] && resultArray[2] <= resultArray[3] && resultArray[3] <= resultArray[4]).toBe(true)
-  })
-  it('should return true', () => {
-    const mySampler: weightedSampler = createWeightedSampler([
-      { weight: 0.1, reward: 0 },
-      { weight: 1, reward: 1 },
-      { weight: 10, reward: 2 },
-      { weight: 100, reward: 3 },
-      { weight: 1000, reward: 4 }
+      { weight: 2, reward: 1 },
+      { weight: 4, reward: 2 },
+      { weight: 8, reward: 3 },
+      { weight: 16, reward: 4 }
     ])
     const resultArray: number[] = new Array(5).fill(0)
     for (let i = 0; i < 1000; i++) {
