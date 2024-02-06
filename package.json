@@ -4,6 +4,7 @@
   "description": "Efficient random weighted",
   "main": "dist/efficient-random-weighted.js",
   "types": "dist/efficient-random-weighted.d.ts",
+  "files": ["dist/efficient-random-weighted.js", "dist/efficient-random-weighted.d.ts"],
   "scripts": {
     "test": "jest",
     "build": "tsc",
