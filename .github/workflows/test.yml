@@ -1,27 +1,51 @@
-name: Run Tests on All Branches, Merges, and Pull Requests
-
+name: toolkit-unit-tests
 on:
   push:
-    branches: "*"  # Trigger on all branches (or adjust branch patterns)
+    branches:
+      - main
+    paths-ignore:
+      - '**.md'
   pull_request:
-    types: [ opened, closed ]  # Optional: Filter pull request types
-  merge:
+    paths-ignore:
+      - '**.md'
 
 jobs:
-  test:
-    runs-on: ubuntu-latest  # Adjust runner environment if needed
-    steps:
-      - uses: actions/checkout@v3
-      - name: Install dependencies
-        run: npm ci
-      - name: Run tests
-        run: npm run test  # Adjust test script if different
-        
-      # Optionally upload test results as an artifact
-      - name: Upload test results
-        uses: actions/upload-artifact@v3
-        if: always()
-        with:
-          name: test-results
-          path: test_results/**/*.xml  # Adjust path pattern to match your output
 
+  build:
+    name: Build
+
+    strategy:
+      matrix:
+        runs-on: [ubuntu-latest, macos-latest, windows-latest]
+      fail-fast: false
+
+    runs-on: ${{ matrix.runs-on }}
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Set Node.js 20.x
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20.x
+
+    - name: npm install
+      run: npm install
+
+    - name: Bootstrap
+      run: npm run bootstrap
+
+    - name: Compile
+      run: npm run build
+
+    - name: npm test
+      run: npm test -- --runInBand --forceExit
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+
+    - name: Lint
+      run: npm run lint
+
+    - name: Format
+      run: npm run format-check

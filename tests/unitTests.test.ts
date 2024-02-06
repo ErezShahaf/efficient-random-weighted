@@ -32,7 +32,7 @@ describe('check that the results make sense statistically. It can fail in rare o
       { weight: 1.04, reward: 4 }
     ])
     const resultArray: number[] = new Array(5).fill(0)
-    for (let i = 0; i < 1000 * 1000 * 5; i++) {
+    for (let i = 0; i < 1000 * 1000 * 10; i++) {
       resultArray[mySampler()]++
     }
     expect(resultArray[0] < resultArray[1] && resultArray[1] < resultArray[2] && resultArray[2] < resultArray[3] && resultArray[3] < resultArray[4]).toBe(true)
@@ -46,7 +46,7 @@ describe('check that the results make sense statistically. It can fail in rare o
       { weight: 100, reward: 4 }
     ])
     const resultArray: number[] = new Array(5).fill(0)
-    for (let i = 0; i < 1000 * 1000; i++) {
+    for (let i = 0; i < 1000 * 1000 * 2; i++) {
       resultArray[mySampler()]++
     }
     expect(resultArray[0] < resultArray[1] && resultArray[1] < resultArray[2] && resultArray[2] < resultArray[3] && resultArray[3] < resultArray[4]).toBe(true)
@@ -57,7 +57,7 @@ describe('check that the results make sense statistically. It can fail in rare o
       { weight: 1, reward: 1 }
     ])
     const resultArray: number[] = new Array(5).fill(0)
-    for (let i = 0; i < 1000 * 1000; i++) {
+    for (let i = 0; i < 1000 * 1000 * 2; i++) {
       resultArray[mySampler()]++
     }
     const ratio: number = resultArray[0] / resultArray[1]

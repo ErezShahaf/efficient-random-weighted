@@ -6,7 +6,8 @@
   "types": "dist/efficient-random-weighted.d.ts",
   "scripts": {
     "test": "jest",
-    "build": "tsc"
+    "build": "tsc",
+    "lint": "tsc"
   },
   "author": "Erez Shahaf",
   "license": "MIT",
