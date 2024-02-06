@@ -1,0 +1,26 @@
+name: Publish to npm
+
+on:
+  push:
+    branches: [ main ]  # Trigger on push to main branch
+  release:
+    types: [ published ]  # Trigger on release published
+  workflow_dispatch:  # Optional: Allow manual trigger
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    secrets:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}  # Store your npm token as a secret
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm ci
+      - name: Build package (if needed)
+        run: npm run build  # Adjust build script if necessary
+      - name: Publish to npm
+        run: |
+          npm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}
+          npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}  # Set env variable for authentication

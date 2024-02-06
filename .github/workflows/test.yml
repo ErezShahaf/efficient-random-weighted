@@ -1,0 +1,27 @@
+name: Run Tests on All Branches, Merges, and Pull Requests
+
+on:
+  push:
+    branches: "*"  # Trigger on all branches (or adjust branch patterns)
+  pull_request:
+    types: [ opened, closed ]  # Optional: Filter pull request types
+  merge:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest  # Adjust runner environment if needed
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm ci
+      - name: Run tests
+        run: npm run test  # Adjust test script if different
+        
+      # Optionally upload test results as an artifact
+      - name: Upload test results
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: test-results
+          path: test_results/**/*.xml  # Adjust path pattern to match your output
+
