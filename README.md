@@ -23,7 +23,7 @@ const mySampler = createWeightedSampler([
 ])
 ```
 
-Now we can continuously use this sampler to get an item extremely fast. Based on the weights we have 20% chance to get 0, 70% chance to get 1, and 10% chance to get 2.
+Now we can continuously use this sampler to randomize items. Based on the weights we have 20% chance to get 0, 70% chance to get 1, and 10% chance to get 2.
 
 ### Using the sampler to draft and log the result.
 `console.log(mySampler())`
