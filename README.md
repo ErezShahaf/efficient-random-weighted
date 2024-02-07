@@ -1,10 +1,10 @@
 # Efficient-Random-Weighted
-## What is it?
+## 📘 What is it?
 A node package for selecting an item based on probability/weight in a time complexity of O(1).
 It is especially beneficial in functions that choose between a high amount of items.
-## Install with npm
+## 🔨 Install with npm
 `npm install efficient-random-weighted`
-## Examples
+## 📖 Examples
 First, we create a weighted sampler. In the example below I have created a sampler that returns a reward of type number but it can support all types. 
 ### Create a sampler in Typescript
 ```
