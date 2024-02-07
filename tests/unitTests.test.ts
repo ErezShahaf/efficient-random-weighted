@@ -1,14 +1,14 @@
-import { type weightedSampler, createWeightedSampler } from '../src/efficient-random-weighted'
+import { type WeightedSampler, createWeightedSampler } from '../src/efficient-random-weighted'
 
 describe('create one item sampler and get reward', () => {
   it('should return 10', () => {
-    const mySampler: weightedSampler = createWeightedSampler([
+    const mySampler: WeightedSampler<number> = createWeightedSampler([
       { weight: 1, reward: 10 }
     ])
     expect(mySampler()).toBe(10)
   })
   it('should return 10', () => {
-    const mySampler: weightedSampler = createWeightedSampler([
+    const mySampler: WeightedSampler<number> = createWeightedSampler([
       { weight: 0.000000001, reward: 10 }
     ])
     expect(mySampler()).toBe(10)
@@ -24,7 +24,7 @@ describe('try to create invalid samplers', () => {
 })
 describe('check that the results make sense statistically.', () => {
   it('should return true', () => {
-    const mySampler: weightedSampler = createWeightedSampler([
+    const mySampler: WeightedSampler<number> = createWeightedSampler([
       { weight: 1, reward: 0 },
       { weight: 2, reward: 1 },
       { weight: 4, reward: 2 },
@@ -38,7 +38,7 @@ describe('check that the results make sense statistically.', () => {
     expect(resultArray[0] <= resultArray[1] && resultArray[1] <= resultArray[2] && resultArray[2] <= resultArray[3] && resultArray[3] <= resultArray[4]).toBe(true)
   })
   it('should return true', () => {
-    const mySampler: weightedSampler = createWeightedSampler([
+    const mySampler: WeightedSampler<number> = createWeightedSampler([
       { weight: 1, reward: 0 },
       { weight: 1, reward: 1 }
     ])
@@ -54,7 +54,7 @@ describe('check that the results make sense statistically.', () => {
 describe('check reward as object', () => {
   it('should return true', () => {
     const myObject = { value: 10 }
-    const mySampler: weightedSampler = createWeightedSampler([
+    const mySampler: WeightedSampler<{ value: number }> = createWeightedSampler([
       { weight: 1, reward: myObject }
     ])
     expect(mySampler()).toBe(myObject)
@@ -63,7 +63,7 @@ describe('check reward as object', () => {
 describe('check reward as string', () => {
   it('should return true', () => {
     const myString: string = 'banana'
-    const mySampler: weightedSampler = createWeightedSampler([
+    const mySampler: WeightedSampler<string> = createWeightedSampler([
       { weight: 1, reward: myString }
     ])
     expect(mySampler() === 'banana').toBe(true)
