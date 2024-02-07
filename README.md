@@ -34,6 +34,7 @@ Lets imagine that we have 3 buckets.
 - 1 Liter of orange juice
 - 1 Liter of water
 - 2 Liters of apple juice
+
   
 ![image](https://github.com/ErezShahaf/efficient-random-weighted/assets/62619268/2927994a-0f72-4b26-8c2d-4c4965e40b6e)
 
