@@ -41,5 +41,6 @@ In order to draft a random liquid based on the amount (higher chances for higher
 ### This package
 During the creation of the sampler, we pour liquid between cups to acheive cups of similar volume.
 ![image](https://github.com/ErezShahaf/efficient-random-weighted/assets/62619268/e9bce970-f1f4-4141-998f-86a42da699dc)
+
 Then, when we use the sampler, we can simply choose a cup (index) randomly. If the cup has one liquid, we return it. If the cup has two liquids, we randomize a float between 0-1 and choose based of the volume (probability) if each liquid. Since in our case the cup is half water and half carrot, we can choose that if the randomized number is between 0-0.5 we return carrot, and if it is between 0.5-1 we return water. This method allows us to randomized a weighted item in O(1).
 
