@@ -15,8 +15,8 @@ export const createWeightedSampler = <T>(weightedItems: WeightedItems<T>): Weigh
     return sum + item.weight;
   }, 0);
 
-  const weightsToProbabilitiesRatio = weightedItems.length / weightSum;
-  const probabilities = weightedItems.map((p) => p.weight * weightsToProbabilitiesRatio);
+  const averageWeightPerIndex = weightedItems.length / weightSum;
+  const probabilities = weightedItems.map((p) => p.weight * averageWeightPerIndex);
 
   const overFull: number[] = [];
   const underFull: number[] = [];
