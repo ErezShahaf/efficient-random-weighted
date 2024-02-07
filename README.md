@@ -28,7 +28,7 @@ Now we can continuously use this sampler to get an item extremely fast. Based on
 ### Using the sampler to draft and log the result.
 `console.log(mySampler())`
 
-## How it works
+## 😵 How it works
 ### Other packages
 Lets imagine that we have 3 buckets.
 - 1 Liter of orange juice
