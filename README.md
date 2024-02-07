@@ -6,10 +6,11 @@ It is especially beneficial in functions that choose between a high amount of it
 `npm install efficient-random-weighted`
 ## 📖 Examples
 First, we create a weighted sampler. In the example below I have created a sampler that returns a reward of type number but it can support all types. 
-### Import
-`import {WeightedSampler, createWeightedSampler} from 'efficient-random-weighted'`
+
 ### Create a sampler in Typescript
 ```
+import {WeightedSampler, createWeightedSampler} from 'efficient-random-weighted'
+
 const mySampler: WeightedSampler<number> = createWeightedSampler([
   { weight: 20, reward: 0 },
   { weight: 70, reward: 1 },
@@ -18,6 +19,8 @@ const mySampler: WeightedSampler<number> = createWeightedSampler([
 ```
 ### Create a sampler in Javascript
 ```
+import {createWeightedSampler} from 'efficient-random-weighted'
+
 const mySampler = createWeightedSampler([
   { weight: 20, reward: 0 },
   { weight: 70, reward: 1 },
