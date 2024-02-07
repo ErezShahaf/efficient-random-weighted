@@ -1,6 +1,6 @@
 {
   "name": "efficient-random-weighted",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Efficient random weighted",
   "main": "dist/efficient-random-weighted.js",
   "types": "dist/efficient-random-weighted.d.ts",
